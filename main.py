@@ -8,9 +8,10 @@ for i in range(len(group)):
   personFearLvl = int(group[i])
   if personFearLvl > tempGroup:
     tempGroup += 1
-  elif personFearLvl == tempGroup:
-    totalGroup += 1
-    tempGroup = 1
+    if personFearLvl == tempGroup:
+      totalGroup += 1
+      tempGroup = 0
+
 
 print(totalGroup)
 
