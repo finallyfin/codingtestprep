@@ -15,7 +15,8 @@ for i in range(len(group)):
 
 print(totalGroup)
 
-print('oh im in trouble')
+//not running for some reason
+
 
 
 
