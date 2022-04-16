@@ -16,7 +16,7 @@ for i in range(len(group)):
 print(totalGroup)
 
 //not running for some reason
-
+//says PermissionError
 
 
 
