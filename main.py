@@ -35,6 +35,7 @@ print(totalGroup)
 exit status 1
   */
 
+
 #아래는 모범답안
 import sys
 
