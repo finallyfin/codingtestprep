@@ -11,6 +11,7 @@ for i in range(len(group)):
     if personFearLvl == tempGroup:
       totalGroup += 1
       tempGroup = 0
+      
 
 
 print(totalGroup)
@@ -53,6 +54,7 @@ for p in phobia:
         group = 0
 
 print(count)
+
 
 
 
