@@ -61,23 +61,27 @@ id_list	report	k	result
 "ryan"이 "con"을 4번 신고했으나, 주어진 조건에 따라 한 유저가 같은 유저를 여러 번 신고한 경우는 신고 횟수 1회로 처리합니다. 따라서 "con"은 1회 신고당했습니다. 3번 이상 신고당한 이용자는 없으며, "con"과 "ryan"은 결과 메일을 받지 않습니다. 따라서 [0, 0]을 return 합니다.
 """
 
-# defaultdict 선언
-number_of_reported = defaultdict(int)
-user_stack = defaultdict(list)
+from collections import defaultdict
 
-# defaultdict 초기화
-[user_stack[id] for id in id_list]
-[number_of_reported[id] for id in id_list]
+def solution(id_list, report, k):
+    answer = []
+    number_of_reported = defaultdict(int)
+    user_stack = defaultdict(list)
 
-# output
-# defaultdict(<class 'list'>, {'muzi': [], 'frodo': [], 'apeach': [], 'neo': []})
-# defaultdict(<class 'int'>, {'muzi': 0, 'frodo': 0, 'apeach': 0, 'neo': 0})
-
-for line in set(report):
-    user_id, reported_id = line.split()
-    user_stack[user_id].append(reported_id)
-    number_of_reported[reported_id] += 1
+    [user_stack[id] for id in id_list]
+    [number_of_reported[id] for id in id_list]
     
-# output
-# defaultdict(<class 'list'>, {'muzi': ['neo', 'frodo'], 'frodo': ['neo'], 'apeach': ['muzi', 'frodo'], 'neo': []})
-# defaultdict(<class 'int'>, {'muzi': 1, 'frodo': 2, 'apeach': 0, 'neo': 2})
+    for line in set(report):
+        user_id, reported_id = line.split()
+        user_stack[user_id].append(reported_id)
+        number_of_reported[reported_id] += 1
+    
+    blocked_user = [id for id, val in number_of_reported.items() if val >=k]
+    for id, val in user_stack.items():
+        count = 0 
+        for black_user in blocked_user:
+            if black_user in val:
+                count += 1
+        answer.append(count)
+                
+    return answer
