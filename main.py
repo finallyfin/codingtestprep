@@ -4,6 +4,7 @@ totalGroup = 0;
 group = input().split();
 group.sort();
 
+
 for i in range(len(group)):
   personFearLvl = int(group[i])
   if personFearLvl > tempGroup:
